@@ -5,6 +5,10 @@ NAMESPACE="operators"
 REPOSITORY="jboss"
 RELEASE="1.6.0"
 
+# Remove leading and trailing double quotes, if there are any.
+TOKEN="${TOKEN%\"}"
+TOKEN="${TOKEN#\"}"
+
 function cleanup() {
     rm -f ${FILENAME}.tar.gz
 }

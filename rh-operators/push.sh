@@ -3,7 +3,11 @@
 FILENAME="rh-operators"
 NAMESPACE="operators"
 REPOSITORY="rh-operators"
-RELEASE="1.1.0"
+RELEASE="1.2.0"
+
+# Remove leading and trailing double quotes, if there are any.
+TOKEN="${TOKEN%\"}"
+TOKEN="${TOKEN#\"}"
 
 function cleanup() {
     rm -f ${FILENAME}.tar.gz

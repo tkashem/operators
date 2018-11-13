@@ -5,6 +5,10 @@ NAMESPACE="operators"
 REPOSITORY="optional"
 RELEASE="1.5.0"
 
+# Remove leading and trailing double quotes, if there are any.
+TOKEN="${TOKEN%\"}"
+TOKEN="${TOKEN#\"}"
+
 function cleanup() {
     rm -f ${FILENAME}.tar.gz
 }
