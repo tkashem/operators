@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: descheduler-operator
+  namespace: openshift-operator-lifecycle-manager
+spec:
+  sourceType: internal
+  configMap: descheduler-operator
+  displayName: Red Hat Operators
+  publisher: Red Hat

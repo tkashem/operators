@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: InstallPlan
+metadata:
+  namespace: openshift-operator-lifecycle-manager
+  name: descheduler
+spec:
+  source: descheduler-operator
+  sourceNamespace: openshift-operator-lifecycle-manager
+  clusterServiceVersionNames:
+  - descheduler.v0.0.1
+  approval: Automatic
+  approved: true

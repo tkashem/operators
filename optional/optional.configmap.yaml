@@ -1,0 +1,100 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: descheduler-operator
+  namespace: openshift-operator-lifecycle-manager
+
+data:
+  customResourceDefinitions: |-
+    - apiVersion: apiextensions.k8s.io/v1beta1
+      kind: CustomResourceDefinition
+      metadata:
+        name: deschedulers.descheduler.io
+      spec:
+        group: descheduler.io
+        names:
+          kind: Descheduler
+          listKind: DeschedulerList
+          plural: deschedulers
+          singular: descheduler
+        scope: Namespaced
+        version: v1alpha1
+  clusterServiceVersions: |-
+   - apiVersion: operators.coreos.com/v1alpha1
+     kind: ClusterServiceVersion
+     metadata:
+       name: descheduler.v0.0.1
+       namespace: placeholder
+     spec:
+       install:
+         strategy: deployment
+         spec:
+           clusterPermissions:
+           - serviceAccountName: openshift-descheduler
+             rules:
+             - apiGroups: [""]
+               resources: ["services", "pods", "configmaps", "secrets", "names", "nodes","pods/eviction"]
+               verbs: ["*"] 
+             - apiGroups: ["apps"]
+               resources: ["deployments"]
+               verbs: ["*"]
+             - apiGroups: ["batch", "extensions"]
+               resources: ["jobs"]
+               verbs: ["*"]
+             - apiGroups: ["descheduler.io"]
+               resources: ["*"]
+               verbs: ["*"]      
+           deployments:
+             - name: descheduler-operator
+               spec:
+                 replicas: 1
+                 selector:
+                   matchLabels:
+                     app: descheduler-operator
+                 template:
+                   metadata:
+                     labels:
+                       app: descheduler-operator
+                   spec:
+                     containers:
+                     - name: descheduler-operator
+                       image: docker.io/ravig/descheduler-operator:v0.0.6
+                       command:
+                       - descheduler-operator
+                       imagePullPolicy: Always
+                       env:
+                       - name: MY_POD_NAMESPACE
+                         valueFrom:
+                           fieldRef:
+                             fieldPath: metadata.namespace
+                       - name: MY_POD_NAME
+                         valueFrom:
+                           fieldRef:
+                             fieldPath: metadata.name
+                       - name: WATCH_NAMESPACE
+                         valueFrom:
+                           fieldRef:
+                             fieldPath: metadata.namespace
+                       - name: OPERATOR_NAME
+                         value: "descheduler-operator"
+                     restartPolicy: Always
+                     terminationGracePeriodSeconds: 5
+                     serviceAccountName: openshift-descheduler
+                     serviceAccount: openshift-descheduler
+       customresourcedefinitions:
+         owned:
+           - description: Represents an instance of a Descheduler application
+             displayName: Descheduler Operator
+             kind: Descheduler
+             name: deschedulers.descheduler.io
+             version: v1alpha1
+       version: 0.0.1
+       displayName: Descheduler
+       labels:
+         olm-owner-enterprise-app: descheduler-operator
+         olm-status-descriptors: descheduler.v0.0.1
+  packages: |-
+    - packageName: descheduler
+      channels:
+      - name: alpha
+        currentCSV: descheduler.v0.0.1
