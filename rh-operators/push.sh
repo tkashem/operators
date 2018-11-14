@@ -3,7 +3,7 @@
 FILENAME="rh-operators"
 NAMESPACE="operators"
 REPOSITORY="rh-operators"
-RELEASE="1.2.0"
+RELEASE="1.4.0"
 
 # Remove leading and trailing double quotes, if there are any.
 TOKEN="${TOKEN%\"}"

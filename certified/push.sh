@@ -3,7 +3,7 @@
 FILENAME="30_07-certified-operators.configmap"
 NAMESPACE="operators"
 REPOSITORY="certified"
-RELEASE="1.1.0"
+RELEASE="1.3.0"
 
 # Remove leading and trailing double quotes, if there are any.
 TOKEN="${TOKEN%\"}"
