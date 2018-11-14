@@ -26,7 +26,7 @@ data:
        name: descheduler.v0.0.1
        namespace: placeholder
        annotations:
-         longdescription: |
+         longDescription: |
            # Descheduler for Kubernetes
 
            ## Introduction
@@ -52,10 +52,10 @@ data:
 
            ## Compatibility matrix
 
-           Descheduler  | supported Kubernetes version
-           -------------|-----------------------------
-           0.4          | 1.9+
-           0.1-0.3      | 1.7-1.8
+               Descheduler  | supported Kubernetes version
+               -------------|-----------------------------
+               0.4          | 1.9+
+               0.1-0.3      | 1.7-1.8
 
            ## Note
 
@@ -71,11 +71,11 @@ data:
          support: Red Hat
          healthIndex: B
      spec:
-        maintainers:
-        - name: Red Hat
-          email: support@redhat.com      
-        provider:
-          name: Red Hat
+       maintainers:
+       - name: Red Hat
+         email: support@redhat.com      
+       provider:
+         name: Red Hat
        install:
          strategy: deployment
          spec:

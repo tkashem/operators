@@ -3,7 +3,7 @@
 FILENAME="optional.configmap"
 NAMESPACE="operators"
 REPOSITORY="optional"
-RELEASE="1.10.0"
+RELEASE="1.17.0"
 
 # Remove leading and trailing double quotes, if there are any.
 TOKEN="${TOKEN%\"}"
