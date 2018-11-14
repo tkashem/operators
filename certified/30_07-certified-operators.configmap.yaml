@@ -489,76 +489,75 @@ data:
         annotations:
           alm-examples: >-
             [{"apiVersion":"couchbase.com/v1","kind":"CouchbaseCluster","metadata":{"name":"cb-example","namespace":"default"},"spec":{"authSecret":"cb-example-auth","baseImage":"registry.connect.redhat.com/couchbase/server","buckets":[{"conflictResolution":"seqno","enableFlush":true,"evictionPolicy":"fullEviction","ioPriority":"high","memoryQuota":128,"name":"default","replicas":1,"type":"couchbase"}],"cluster":{"analyticsServiceMemoryQuota":1024,"autoFailoverMaxCount":3,"autoFailoverOnDataDiskIssues":true,"autoFailoverOnDataDiskIssuesTimePeriod":120,"autoFailoverServerGroup":false,"autoFailoverTimeout":120,"clusterName":"cb-example","dataServiceMemoryQuota":256,"eventingServiceMemoryQuota":256,"indexServiceMemoryQuota":256,"indexStorageSetting":"memory_optimized","searchServiceMemoryQuota":256},"servers":[{"name":"all_services","services":["data","index","query","search","eventing","analytics"],"size":3}],"version":"5.5.1-1"}}]
-          description: |
-           The Couchbase Autonomous Operator allows users to easily deploy, manage, and
-           maintain Couchbase deployments on OpenShift. By installing this integration
-           you will be able to deply Couchbase Server clusters with a single command.
-          longdescription: >
-          The Couchbase Autonomous Operator allows users to easily deploy, manage, and
-          maintain Couchbase deployments on OpenShift. By installing this integration
-          you will be able to deply Couchbase Server clusters with a single command.
+          description: >-
+            The Couchbase Autonomous Operator allows users to easily deploy, manage, and
+            maintain Couchbase deployments on OpenShift. By installing this integration
+            you will be able to deply Couchbase Server clusters with a single command.
+          longdescription: >-
+            The Couchbase Autonomous Operator allows users to easily deploy, manage, and
+            maintain Couchbase deployments on OpenShift. By installing this integration
+            you will be able to deply Couchbase Server clusters with a single command.
       
-          ## Supported Features
+            ## Supported Features
       
-          * **Automated cluster provisioning** - Deploying a Couchbase Cluster has
-          never been easier. Fill out a Couchbase specific configuration and let the
-          Couchbase Operator take care of provisioning nodes and setting up cluster to
-          your exact specification.
-      
-      
-          * **On-demand scalability** - Automatically scale your cluster up or down by
-          changing a simple configuration parameter and let the Couchbase Operator
-          handle provisioning of new nodes and joining them into the cluster.
+            * **Automated cluster provisioning** - Deploying a Couchbase Cluster has
+            never been easier. Fill out a Couchbase specific configuration and let the
+            Couchbase Operator take care of provisioning nodes and setting up cluster to
+            your exact specification.
       
       
-          * **Auto-recovery** - Detect Couchbase node failures, rebalance out bad
-          nodes, and bring the cluster back up to the desired capacity. Auto-recovery
-          is completely automated so you can sleep easy through the night knowing that
-          the Couchbase Operator will handle any failures.
+            * **On-demand scalability** - Automatically scale your cluster up or down by
+            changing a simple configuration parameter and let the Couchbase Operator
+            handle provisioning of new nodes and joining them into the cluster.
       
       
-          * **Geo-distribution** - Replicate your data between datacenters to move
-          data closer to the users who consume it and protect against disaster
-          scenarios where an entire datacenter becomes unavailable.
+            * **Auto-recovery** - Detect Couchbase node failures, rebalance out bad
+            nodes, and bring the cluster back up to the desired capacity. Auto-recovery
+            is completely automated so you can sleep easy through the night knowing that
+            the Couchbase Operator will handle any failures.
       
       
-          * **Persistent storage** - Define persistent network-attached storage for
-          each node in your cluster to allow pods to be recovered even if the node
-          they were running on is no longer available.
+            * **Geo-distribution** - Replicate your data between datacenters to move
+            data closer to the users who consume it and protect against disaster
+            scenarios where an entire datacenter becomes unavailable.
       
       
-          * **Rack/zone awareness** - Tell the Couchbase Operator about availability
-          zones in your datacenter and let the operator take care of ensuring that
-          nodes in your cluster are deployed equally across each zone.
+            * **Persistent storage** - Define persistent network-attached storage for
+            each node in your cluster to allow pods to be recovered even if the node
+            they were running on is no longer available.
       
       
-          * **Supportability** - When things go wrong, use the cbopinfo tool provided
-          with the Couchbase Operator to collect relevant data about your Couchbase
-          deployment so that you can quickly address issues.
+            * **Rack/zone awareness** - Tell the Couchbase Operator about availability
+            zones in your datacenter and let the operator take care of ensuring that
+            nodes in your cluster are deployed equally across each zone.
       
       
-          * **Centralized configuration management** - Manage your configuration
-          centrally with OpenShift. Updates to the configuration are watched by the
-          Couchbase Operator and actions are taken to make the target cluster match
-          the desired configuration.
-          
-          ## Required Parameters
+            * **Supportability** - When things go wrong, use the cbopinfo tool provided
+            with the Couchbase Operator to collect relevant data about your Couchbase
+            deployment so that you can quickly address issues.
       
-          * `authSecret` - provide the name of a secret that contains two keys for the
-          `username` and `password` of the super user
-          ([documentation](https://docs.couchbase.com/operator/1.0/couchbase-cluster-config.html))
       
-          ## About Couchbase Server
+            * **Centralized configuration management** - Manage your configuration
+            centrally with OpenShift. Updates to the configuration are watched by the
+            Couchbase Operator and actions are taken to make the target cluster match
+            the desired configuration.
+           
+            ## Required Parameters
       
-          Built on the most powerful NoSQL technology, Couchbase Server delivers
-          unparalleled performance at scale, in any cloud. With features like
-          memory-first architecture, geo-distributed deployments, and workload
-          isolation, Couchbase Server excels at supporting mission-critical
-          applications at scale while maintaining submillisecond latencies and 99.999%
-          availability. Plus, with the most comprehensive SQL-compatible query
-          language (N1QL), migrating from RDBMS to Couchbase Server is easy with ANSI
-          joins.
-          packageId: operators/certified
+            * `authSecret` - provide the name of a secret that contains two keys for the
+            `username` and `password` of the super user
+            ([documentation](https://docs.couchbase.com/operator/1.0/couchbase-cluster-config.html))
+      
+            ## About Couchbase Server
+       
+            Built on the most powerful NoSQL technology, Couchbase Server delivers
+            unparalleled performance at scale, in any cloud. With features like
+            memory-first architecture, geo-distributed deployments, and workload
+            isolation, Couchbase Server excels at supporting mission-critical
+            applications at scale while maintaining submillisecond latencies and 99.999%
+            availability. Plus, with the most comprehensive SQL-compatible query
+            language (N1QL), migrating from RDBMS to Couchbase Server is easy with ANSI
+            joins.
           categories: database, nosql, key value
           createdAt: 2019/11/15
           certifiedLevel: Certified II
@@ -887,77 +886,75 @@ data:
         annotations:
           alm-examples: >-
             [{"apiVersion":"dynatrace.com/v1alpha1","kind":"OneAgent","metadata":{"name":"oneagent"},"spec":{"apiUrl":"https://ENVIRONMENTID.live.dynatrace.com/api","args":["APP_LOG_CONTENT_ACCESS=1"],"image":"registry.connect.redhat.com/dynatrace/oneagent"}}]
-          longdescription: >
-          Install full-stack monitoring of [OpenShift
-          clusters](https://www.dynatrace.com/technologies/openshift-monitoring/) with
-          the Dynatrace OneAgent on your cluster. OneAgent connects back to
-          Dynatrace's hosted monitoring tools.
+          longdescription: >-
+            Install full-stack monitoring of [OpenShift
+            clusters](https://www.dynatrace.com/technologies/openshift-monitoring/) with
+            the Dynatrace OneAgent on your cluster. OneAgent connects back to
+            Dynatrace's hosted monitoring tools.
       
-          ## Before Your Start
+            ## Before Your Start
       
-          1\. Make sure to install the Security Context Constraint (SCC) in order for
-          the agent to properly monitor all aspects of your Pods:
-      
-      
-          ``` $ oc create sa dynatrace-oneagent ```
+            1\. Make sure to install the Security Context Constraint (SCC) in order for
+            the agent to properly monitor all aspects of your Pods:
       
       
-          ``` $ oc adm policy add-scc-to-user privileged
-          system:serviceaccount:<namespace>:dynatrace-oneagent ```
+            ``` $ oc create sa dynatrace-oneagent ```
       
       
-          2\. Add a Secret within the Project that contians your API and PaaS tokens
+            ``` $ oc adm policy add-scc-to-user privileged
+            system:serviceaccount:<namespace>:dynatrace-oneagent ```
       
       
-          Get an [API
-          token](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/#anchor-access-tokens)
-          for the Dynatrace API. This token is later referenced as `API_TOKEN`.
+            2\. Add a Secret within the Project that contians your API and PaaS tokens
       
       
-          Get a [Platform-as-a-Service
-          token](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/#anchor-access-tokens).
-          This token is later referenced as `PAAS_TOKEN`.
+            Get an [API
+            token](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/#anchor-access-tokens)
+            for the Dynatrace API. This token is later referenced as `API_TOKEN`.
       
       
-          ``` $ oc -n dynatrace create secret generic oneagent
-          --from-literal="apiToken=API_TOKEN" --from-literal="paasToken=PAAS_TOKEN"
-          ```
+            Get a [Platform-as-a-Service
+            token](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/#anchor-access-tokens).
+            This token is later referenced as `PAAS_TOKEN`.
       
       
-          You may update this Secret at any time to rotate the tokens.
+            ``` $ oc -n dynatrace create secret generic oneagent
+            --from-literal="apiToken=API_TOKEN" --from-literal="paasToken=PAAS_TOKEN"
+            ```
+      
+      
+            You may update this Secret at any time to rotate the tokens.
           
-          ## Required Parameters
+            ## Required Parameters
       
-          * `apiUrl` - provide the environment ID used in conjuction with this
-          monitoring agent in the API adddress, eg
-          `https://<ENVIRONMENTID>.live.dynatrace.com/api`
+            * `apiUrl` - provide the environment ID used in conjuction with this
+            monitoring agent in the API adddress, eg
+            `https://<ENVIRONMENTID>.live.dynatrace.com/api`
       
-          ## Advanced Options ##
+            ## Advanced Options ##
       
-          **Image Override** - use a copy of the OneAgent container image from a
-          registry other than Red Hat's
-      
-      
-          **NodeSelectors** - select a subset of your cluster's Nodes to run OneAgent
-          on, based on labels
+            **Image Override** - use a copy of the OneAgent container image from a
+            registry other than Red Hat's
       
       
-          **Tolerations** - add specific tolerations to the agent so that it can
-          monitor all of the Nodes in your cluster
+            **NodeSelectors** - select a subset of your cluster's Nodes to run OneAgent
+            on, based on labels
       
       
-          **Disable Certificate Checking** - disable any certificate validation that
-          may interact poorly with proxies with in your cluster
+            **Tolerations** - add specific tolerations to the agent so that it can
+            monitor all of the Nodes in your cluster
       
       
-          For a complete list of supported parameters please consult the [Operator
-          Deploy
-          Guide](https://www.dynatrace.com/support/help/shortlink/openshift-deploy#parameters).
-          description: |
-          Install full-stack monitoring of OpenShift
-          clusters with the Dynatrace OneAgent on your cluster. OneAgent connects back to
-          Dynatrace's hosted monitoring tools.
-          packageId: operators/certified
+            **Disable Certificate Checking** - disable any certificate validation that
+            may interact poorly with proxies with in your cluster
+      
+            For a complete list of supported parameters please consult the [Operator
+            Deploy
+            Guide](https://www.dynatrace.com/support/help/shortlink/openshift-deploy#parameters).
+          description: >-
+            Install full-stack monitoring of OpenShift
+            clusters with the Dynatrace OneAgent on your cluster. OneAgent connects back to
+            Dynatrace's hosted monitoring tools.
           categories: monitoring
           createdAt: 2019/11/15
           certifiedLevel: Certified II
@@ -1174,53 +1171,52 @@ data:
         annotations:
           alm-examples: >-
             [{"apiVersion":"mongodb.com/v1","kind":"MongoDbStandalone","metadata":{"name":"my-standalone","namespace":"mongodb"},"spec":{"version":"4.0.2","persistent":false,"project":"my-project","credentials":"my-credentials"}},{"apiVersion":"mongodb.com/v1","kind":"MongoDbReplicaSet","metadata":{"name":"my-replica-set","namespace":"mongodb"},"spec":{"members":3,"version":"4.0.2","persistent":false,"project":"my-project","credentials":"my-credentials"}},{"apiVersion":"mongodb.com/v1","kind":"MongoDbShardedCluster","metadata":{"name":"my-sharded-cluster","namespace":"mongodb"},"spec":{"shardCount": 2, "mongodsPerShardCount": 3, "mongosCount": 2, "configServerCount": 3,"version":"4.0.2","persistent":false,"project":"my-project","credentials":"my-credentials"}}]
-          description: |
-          The MongoDB Enterprise Kubernetes Operator enables easy deploys of MongoDB
-          into Kubernetes clusters, using our management, monitoring and backup
-          platforms, Ops Manager and Cloud Manager.
-          longdescription: |
-          The MongoDB Enterprise Kubernetes Operator enables easy deploys of MongoDB
-          into Kubernetes clusters, using our management, monitoring and backup
-          platforms, Ops Manager and Cloud Manager.
+          description: >-
+            The MongoDB Enterprise Kubernetes Operator enables easy deploys of MongoDB
+            into Kubernetes clusters, using our management, monitoring and backup
+            platforms, Ops Manager and Cloud Manager.
+          longdescription: >-
+            The MongoDB Enterprise Kubernetes Operator enables easy deploys of MongoDB
+            into Kubernetes clusters, using our management, monitoring and backup
+            platforms, Ops Manager and Cloud Manager.
       
-          ## Before You Start
+            ## Before You Start
       
-          To start using the operator you'll need an account in MongoDB Cloud Manager.
+            To start using the operator you'll need an account in MongoDB Cloud Manager.
       
-          * [Create a Secret with your OpsManager API key](https://docs.opsmanager.mongodb.com/current/tutorial/install-k8s-operator/#create-credentials)
+            * [Create a Secret with your OpsManager API key](https://docs.opsmanager.mongodb.com/current/tutorial/install-k8s-operator/#create-credentials)
       
-          * [Create a ConfigMap with your OpsManager project ID and URL](https://docs.opsmanager.mongodb.com/current/tutorial/install-k8s-operator/#create-onprem-project)
+            * [Create a ConfigMap with your OpsManager project ID and URL](https://docs.opsmanager.mongodb.com/current/tutorial/install-k8s-operator/#create-onprem-project)
       
-          By installing this integration, you will be able to deploy MongoDB instances
-          with a single simple command.
+            By installing this integration, you will be able to deploy MongoDB instances
+            with a single simple command.
       
-          ## Required Parameters
+            ## Required Parameters
       
-          * `project` - Enter the name of the ConfigMap containing project information
+            * `project` - Enter the name of the ConfigMap containing project information
       
-          * `credentials` - Enter the name of the Secret containing your OpsManager credentials
+            * `credentials` - Enter the name of the Secret containing your OpsManager credentials
 
-          ## Supported MongoDB Deployment Types ##
+            ## Supported MongoDB Deployment Types ##
       
-          * Standalone: An instance of mongod that is running as a single server and
-          not as part of a replica set, this is, it does not do any kind of
-          replication.
-      
-      
-          * Replica Set: A replica set in MongoDB is a group of mongod processes that
-          maintain the same data set. Replica sets provide redundancy and high
-          availability, and are the basis for all production deployments. This section
-          introduces replication in MongoDB as well as the components and architecture
-          of replica sets. The section also provides tutorials for common tasks
-          related to replica sets.
+            * Standalone: An instance of mongod that is running as a single server and
+            not as part of a replica set, this is, it does not do any kind of
+            replication.
       
       
-          * Sharded Cluster: The set of nodes comprising a sharded MongoDB deployment.
-          A sharded cluster consists of config servers, shards, and one or more mongos
-          routing processes. Sharding is a A database architecture that partitions
-          data by key ranges and distributes the data among two or more database
-          instances. Sharding enables horizontal scaling.
-          packageId: operators/certified
+            * Replica Set: A replica set in MongoDB is a group of mongod processes that
+            maintain the same data set. Replica sets provide redundancy and high
+            availability, and are the basis for all production deployments. This section
+            introduces replication in MongoDB as well as the components and architecture
+            of replica sets. The section also provides tutorials for common tasks
+            related to replica sets.
+      
+      
+            * Sharded Cluster: The set of nodes comprising a sharded MongoDB deployment.
+            A sharded cluster consists of config servers, shards, and one or more mongos
+            routing processes. Sharding is a A database architecture that partitions
+            data by key ranges and distributes the data among two or more database
+            instances. Sharding enables horizontal scaling.
           categories: database, nosql
           createdAt: 2019/11/15
           certifiedLevel: Certified II

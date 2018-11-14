@@ -3,7 +3,7 @@
 FILENAME="jboss"
 NAMESPACE="operators"
 REPOSITORY="jboss"
-RELEASE="1.7.0"
+RELEASE="1.10.0"
 
 # Remove leading and trailing double quotes, if there are any.
 TOKEN="${TOKEN%\"}"
