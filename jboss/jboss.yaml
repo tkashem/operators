@@ -55,9 +55,11 @@ data:
           tectonic-visibility: ocs
           alm-examples: '[{"apiVersion":"jboss.middleware.redhat.com/v1","kind":"JBossApp","metadata":{"name":"example","namespace":"default"},"spec":{"size":3,"version":"3.2.13"}}]'
           packageId: operators/jboss
-          description: Red Hat JBoss.
-          createdAt: 2019/01/01
-          certifiedLevel: excellent
+          categories: web server, middleware
+          description: Platform for building and running web applications on JBoss Web Server 3.1 - Tomcat v8
+          longdescription: Platform for building and running web applications on JBoss Web Server 3.1 - Tomcat v8
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
           repository: https://jboss.redhat.com
           containerImage: quay.io/redhat/jboss
           support: Red Hat
@@ -71,10 +73,10 @@ data:
         version: 0.1.0
         maturity: alpha
         maintainers:
-        - name: Red Hat (RHCC)
+        - name: Red Hat
           email: support@redhat.com      
         provider:
-          name: Red Hat (RHCC)
+          name: Red Hat
         labels:
           alm-owner-jboss: jbossapp-operator
           operated-by: jbossapp-operator

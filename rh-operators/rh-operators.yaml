@@ -9122,6 +9122,36 @@ data:
         namespace: placeholder
         annotations:
           alm-examples: '[{"apiVersion":"kafka.strimzi.io/v1alpha1","kind":"Kafka","metadata":{"name":"my-cluster"},"spec":{"kafka":{"replicas":3,"listeners":{"plain":{},"tls":{}},"config":{"offsets.topic.replication.factor":3,"transaction.state.log.replication.factor":3,"transaction.state.log.min.isr":2},"storage":{"type":"ephemeral"}},"zookeeper":{"replicas":3,"storage":{"type":"ephemeral"}},"entityOperator":{"topicOperator":{},"userOperator":{}}}}, {"apiVersion":"kafka.strimzi.io/v1alpha1","kind":"KafkaConnect","metadata":{"name":"my-connect-cluster"},"spec":{"replicas":1,"bootstrapServers":"my-cluster-kafka-bootstrap:9093","tls":{"trustedCertificates":[{"secretName":"my-cluster-cluster-ca-cert","certificate":"ca.crt"}]}}}, {"apiVersion":"kafka.strimzi.io/v1alpha1","kind":"KafkaConnectS2I","metadata":{"name":"my-connect-cluster"},"spec":{"replicas":1,"bootstrapServers":"my-cluster-kafka-bootstrap:9093","tls":{"trustedCertificates":[{"secretName":"my-cluster-cluster-ca-cert","certificate":"ca.crt"}]}}}, {"apiVersion":"kafka.strimzi.io/v1alpha1","kind":"KafkaTopic","metadata":{"name":"my-topic","labels":{"strimzi.io/cluster":"my-cluster"}},"spec":{"partitions":10,"replicas":3,"config":{"retention.ms":604800000,"segment.bytes":1073741824}}}, {"apiVersion":"kafka.strimzi.io/v1alpha1","kind":"KafkaUser","metadata":{"name":"my-user","labels":{"strimzi.io/cluster":"my-cluster"}},"spec":{"authentication":{"type":"tls"},"authorization":{"type":"simple","acls":[{"resource":{"type":"topic","name":"my-topic","patternType":"literal"},"operation":"Read","host":"*"},{"resource":{"type":"topic","name":"my-topic","patternType":"literal"},"operation":"Describe","host":"*"},{"resource":{"type":"group","name":"my-group","patternType":"literal"},"operation":"Read","host":"*"},{"resource":{"type":"topic","name":"my-topic","patternType":"literal"},"operation":"Write","host":"*"},{"resource":{"type":"topic","name":"my-topic","patternType":"literal"},"operation":"Create","host":"*"},{"resource":{"type":"topic","name":"my-topic","patternType":"literal"},"operation":"Describe","host":"*"}]}}}]'
+          longdescription: |
+              **Red Hat AMQ Streams** is a massively scalable, distributed, and high performance data streaming platform based on the Apache Kafka project. 
+              AMQ Streams provides an event streaming backbone that allows microservices and other application components to exchange data with extremely high throughput and low latency. 
+              
+              **The core capabilities include**
+              * A pub/sub messaging model, similar to a traditional enterprise messaging system, in which application components publish and consume events to/from an ordered stream
+              * The long term, fault-tolerant storage of events
+              * The ability for a consumer to replay streams of events
+              * The ability to partition topics for horizontal scalability
+      
+              # Before you start
+      
+              1\. Create AMQ Streams Cluster Roles
+              ```
+              $ oc apply -f http://amq.io/amqstreams/rbac.yaml
+              ```
+              2\. Create following bindings
+              ```
+              $ oc adm policy add-cluster-role-to-user strimzi-cluster-operator -z strimzi-cluster-operator --namespace <namespace>
+              $ oc adm policy add-cluster-role-to-user strimzi-kafka-broker -z strimzi-cluster-operator --namespace <namespace>
+              ```
+          description: Red Hat AMQ Streams is a massively scalable, distributed, and high performance data streaming platform based on the Apache Kafka project.
+          packageId: operators/rh-operators
+          categories: messaging, streaming
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://amqstreams.redhat.com
+          containerImage: quay.io/redhat/amqstreams
+          support: Red Hat
+          healthIndex: B
       spec:
         displayName: AMQ Streams
         description: |
@@ -9149,10 +9179,10 @@ data:
         version: 1.0.0-Beta
         maturity: beta
         maintainers:
-        - name: Red Hat, Inc.
+        - name: Red Hat
           email: customerservice@redhat.com
         provider:
-          name: Red Hat, Inc.
+          name: Red Hat
         links:
         - name: Product Page
           url: https://access.redhat.com/products/red-hat-amq-streams
@@ -9736,10 +9766,44 @@ data:
         annotations:
           tectonic-visibility: ocs
           alm-examples: '[{"apiVersion":"etcd.database.coreos.com/v1beta2","kind":"EtcdCluster","metadata":{"name":"example","namespace":"default"},"spec":{"size":3,"version":"3.2.13"}},{"apiVersion":"etcd.database.coreos.com/v1beta2","kind":"EtcdRestore","metadata":{"name":"example-etcd-cluster"},"spec":{"etcdCluster":{"name":"example-etcd-cluster"},"backupStorageType":"S3","s3":{"path":"<full-s3-path>","awsSecret":"<aws-secret>"}}},{"apiVersion":"etcd.database.coreos.com/v1beta2","kind":"EtcdBackup","metadata":{"name":"example-etcd-cluster-backup"},"spec":{"etcdEndpoints":["<etcd-cluster-endpoints>"],"storageType":"S3","s3":{"path":"<full-s3-path>","awsSecret":"<aws-secret>"}}}]'
+          longdescription: |
+          **etcd** is a distributed key value store that provides a reliable way to store data across a cluster of machines. It’s open-source and available on GitHub. etcd gracefully handles leader elections during network partitions and will tolerate machine failure, including the leader. Your applications can read and write data into etcd.
+          A simple use-case is to store database connection details or feature flags within etcd as key value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of the consistency guarantees to implement database leader elections or do distributed locking across a cluster of workers.
+      
+          _The etcd Open Cloud Service is Public Alpha. The goal before Beta is to fully implement backup features._
+      
+          ### Reading and writing to etcd
+      
+          Communicate with etcd though its command line utility `etcdctl` or with the API using the automatically generated Kubernetes Service.
+      
+          [Read the complete guide to using the etcd Open Cloud Service](https://coreos.com/tectonic/docs/latest/alm/etcd-ocs.html)
+      
+          ### Supported Features
+      
+          **High availability**   
+      
+          Multiple instances of etcd are networked together and secured. Individual failures or networking issues are transparently handled to keep your cluster up and running.
+      
+          **Automated updates**
+      
+          Rolling out a new etcd version works like all Kubernetes rolling updates. Simply declare the desired version, and the etcd service starts a safe rolling update to the new version automatically.
+      
+          **Backups included**
+      
+          Coming soon, the ability to schedule backups to happen on or off cluster.
+          description: etcd is a distributed key value store that provides a reliable way to store data across a cluster of machines.
+          packageId: operators/rh-operators
+          categories: key value, database
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://etcd.coreos.com
+          containerImage: quay.io/coreos/etcd
+          support: CoreOS, Inc
+          healthIndex: A
       spec:
         displayName: etcd
         description: |
-          etcd is a distributed key value store that provides a reliable way to store data across a cluster of machines. It’s open-source and available on GitHub. etcd gracefully handles leader elections during network partitions and will tolerate machine failure, including the leader. Your applications can read and write data into etcd.
+          **etcd** is a distributed key value store that provides a reliable way to store data across a cluster of machines. It’s open-source and available on GitHub. etcd gracefully handles leader elections during network partitions and will tolerate machine failure, including the leader. Your applications can read and write data into etcd.
           A simple use-case is to store database connection details or feature flags within etcd as key value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of the consistency guarantees to implement database leader elections or do distributed locking across a cluster of workers.
       
           _The etcd Open Cloud Service is Public Alpha. The goal before Beta is to fully implement backup features._
@@ -10019,6 +10083,40 @@ data:
         annotations:
           tectonic-visibility: ocs
           alm-examples: '[{"apiVersion":"etcd.database.coreos.com/v1beta2","kind":"EtcdCluster","metadata":{"name":"example","namespace":"default"},"spec":{"size":3,"version":"3.2.13"}},{"apiVersion":"etcd.database.coreos.com/v1beta2","kind":"EtcdRestore","metadata":{"name":"example-etcd-cluster"},"spec":{"etcdCluster":{"name":"example-etcd-cluster"},"backupStorageType":"S3","s3":{"path":"<full-s3-path>","awsSecret":"<aws-secret>"}}},{"apiVersion":"etcd.database.coreos.com/v1beta2","kind":"EtcdBackup","metadata":{"name":"example-etcd-cluster-backup"},"spec":{"etcdEndpoints":["<etcd-cluster-endpoints>"],"storageType":"S3","s3":{"path":"<full-s3-path>","awsSecret":"<aws-secret>"}}}]'
+          longdescription: |
+          **etcd** is a distributed key value store that provides a reliable way to store data across a cluster of machines. It’s open-source and available on GitHub. etcd gracefully handles leader elections during network partitions and will tolerate machine failure, including the leader. Your applications can read and write data into etcd.
+          A simple use-case is to store database connection details or feature flags within etcd as key value pairs. These values can be watched, allowing your app to reconfigure itself when they change. Advanced uses take advantage of the consistency guarantees to implement database leader elections or do distributed locking across a cluster of workers.
+      
+          _The etcd Open Cloud Service is Public Alpha. The goal before Beta is to fully implement backup features._
+      
+          ### Reading and writing to etcd
+      
+          Communicate with etcd though its command line utility `etcdctl` or with the API using the automatically generated Kubernetes Service.
+      
+          [Read the complete guide to using the etcd Open Cloud Service](https://coreos.com/tectonic/docs/latest/alm/etcd-ocs.html)
+      
+          ### Supported Features
+      
+          **High availability**   
+      
+          Multiple instances of etcd are networked together and secured. Individual failures or networking issues are transparently handled to keep your cluster up and running.
+      
+          **Automated updates**
+      
+          Rolling out a new etcd version works like all Kubernetes rolling updates. Simply declare the desired version, and the etcd service starts a safe rolling update to the new version automatically.
+      
+          **Backups included**
+      
+          Coming soon, the ability to schedule backups to happen on or off cluster.
+          description: etcd is a distributed key value store that provides a reliable way to store data across a cluster of machines.
+          packageId: operators/rh-operators
+          categories: key value, database
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://etcd.coreos.com
+          containerImage: quay.io/coreos/etcd
+          support: CoreOS, Inc
+          healthIndex: A
       spec:
         displayName: etcd
         description: |
@@ -10296,6 +10394,17 @@ data:
       kind: ClusterServiceVersion
       metadata:
         name: federationv2.v0.0.2
+        annotations:
+          longdescription: Kubernetes Federation V2 namespace-scoped installation
+          description: Kubernetes Federation V2 namespace-scoped installation
+          packageId: operators/rh-operators
+          categories: installation
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://federationv2.redhat.com
+          containerImage: quay.io/redhat/federationv2
+          support: Red Hat
+          healthIndex: A
       spec:
         displayName: FederationV2
         description: |
@@ -10303,7 +10412,7 @@ data:
         version: 0.0.2
         maturity: alpha
         provider:
-          name: Red Hat, Inc
+          name: Red Hat
         labels:
           alm-owner-federationv2: federationv2
           alm-status-descriptors: federationv2.v0.0.2
@@ -10565,6 +10674,35 @@ data:
       metadata:
         name: prometheusoperator.0.14.0
         namespace: placeholder
+        annotations:
+          longdescription: |
+          An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
+      
+          _The Prometheus Open Cloud Service is Public Alpha. The goal before Beta is for additional user testing and minor bug fixes._
+      
+          ### Monitoring applications
+      
+          Prometheus scrapes your application metrics based on targets maintained in a ServiceMonitor object. When alerts need to be sent, they are processsed by an AlertManager.
+      
+          [Read the complete guide to monitoring applications with the Prometheus Open Cloud Service](https://coreos.com/tectonic/docs/latest/alm/prometheus-ocs.html)
+      
+          ## Supported Features
+      
+          **High availability**
+          Multiple instances are run across failure zones and data is replicated. This keeps your monitoring available during an outage, when you need it most.
+          **Updates via automated operations**
+          New Prometheus versions are deployed using a rolling update with no downtime, making it easy to stay up to date.
+          **Handles the dynamic nature of containers**
+          Alerting rules are attached to groups of containers instead of individual instances, which is ideal for the highly dynamic nature of container deployment.
+          description: An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
+          packageId: operators/rh-operators
+          categories: monitoring, alerting
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://prometheus.redhat.com
+          containerImage: quay.io/redhat/prometheus
+          support: CoreOS, Inc
+          healthIndex: A
       spec:
         displayName: Prometheus
         description: |
@@ -10810,6 +10948,34 @@ data:
         annotations:
           tectonic-visibility: ocs
           alm-examples: '[{"apiVersion":"monitoring.coreos.com/v1","kind":"Prometheus","metadata":{"name":"example","labels":{"prometheus":"k8s"}},"spec":{"replicas":2,"version":"v1.7.0","serviceAccountName":"prometheus-k8s","serviceMonitorSelector":{"matchExpressions":[{"key":"k8s-app","operator":"Exists"}]},"ruleSelector":{"matchLabels":{"role":"prometheus-rulefiles","prometheus":"k8s"}},"resources":{"requests":{"memory":"400Mi"}},"alerting":{"alertmanagers":[{"namespace":"monitoring","name":"alertmanager-main","port":"web"}]}}},{"apiVersion":"monitoring.coreos.com/v1","kind":"ServiceMonitor","metadata":{"name":"example","labels":{"k8s-app":"prometheus"}},"spec":{"selector":{"matchLabels":{"k8s-app":"prometheus","prometheus":"k8s"}},"namespaceSelector":{"matchNames":["monitoring"]},"endpoints":[{"port":"web","interval":"30s"}]}},{"apiVersion":"monitoring.coreos.com/v1","kind":"Alertmanager","metadata":{"name":"alertmanager-main"},"spec":{"replicas":3}}]'
+          longdescription: |
+          An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
+      
+          _The Prometheus Open Cloud Service is Public Alpha. The goal before Beta is for additional user testing and minor bug fixes._
+      
+          ### Monitoring applications
+      
+          Prometheus scrapes your application metrics based on targets maintained in a ServiceMonitor object. When alerts need to be sent, they are processsed by an AlertManager.
+      
+          [Read the complete guide to monitoring applications with the Prometheus Open Cloud Service](https://coreos.com/tectonic/docs/latest/alm/prometheus-ocs.html)
+      
+          ## Supported Features
+      
+          **High availability**
+          Multiple instances are run across failure zones and data is replicated. This keeps your monitoring available during an outage, when you need it most.
+          **Updates via automated operations**
+          New Prometheus versions are deployed using a rolling update with no downtime, making it easy to stay up to date.
+          **Handles the dynamic nature of containers**
+          Alerting rules are attached to groups of containers instead of individual instances, which is ideal for the highly dynamic nature of container deployment.
+          description: An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
+          packageId: operators/rh-operators
+          categories: monitoring, alerting
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://prometheus.redhat.com
+          containerImage: quay.io/redhat/prometheus
+          support: CoreOS, Inc
+          healthIndex: A
       spec:
         replaces: prometheusoperator.0.14.0
         displayName: Prometheus
@@ -11075,6 +11241,34 @@ data:
         namespace: placeholder
         annotations:
           alm-examples: '[{"apiVersion":"monitoring.coreos.com/v1","kind":"Prometheus","metadata":{"name":"example","labels":{"prometheus":"k8s"}},"spec":{"replicas":2,"version":"v2.3.2","serviceAccountName":"prometheus-k8s","securityContext": {}, "serviceMonitorSelector":{"matchExpressions":[{"key":"k8s-app","operator":"Exists"}]},"ruleSelector":{"matchLabels":{"role":"prometheus-rulefiles","prometheus":"k8s"}},"alerting":{"alertmanagers":[{"namespace":"monitoring","name":"alertmanager-main","port":"web"}]}}},{"apiVersion":"monitoring.coreos.com/v1","kind":"ServiceMonitor","metadata":{"name":"example","labels":{"k8s-app":"prometheus"}},"spec":{"selector":{"matchLabels":{"k8s-app":"prometheus"}},"endpoints":[{"port":"web","interval":"30s"}]}},{"apiVersion":"monitoring.coreos.com/v1","kind":"Alertmanager","metadata":{"name":"alertmanager-main"},"spec":{"replicas":3, "securityContext": {}}}]'
+          longdescription: |
+          An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
+      
+          _The Prometheus Open Cloud Service is Public Alpha. The goal before Beta is for additional user testing and minor bug fixes._
+      
+          ### Monitoring applications
+      
+          Prometheus scrapes your application metrics based on targets maintained in a ServiceMonitor object. When alerts need to be sent, they are processsed by an AlertManager.
+      
+          [Read the complete guide to monitoring applications with the Prometheus Open Cloud Service](https://coreos.com/tectonic/docs/latest/alm/prometheus-ocs.html)
+      
+          ## Supported Features
+      
+          **High availability**
+          Multiple instances are run across failure zones and data is replicated. This keeps your monitoring available during an outage, when you need it most.
+          **Updates via automated operations**
+          New Prometheus versions are deployed using a rolling update with no downtime, making it easy to stay up to date.
+          **Handles the dynamic nature of containers**
+          Alerting rules are attached to groups of containers instead of individual instances, which is ideal for the highly dynamic nature of container deployment.
+          description: An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
+          packageId: operators/rh-operators
+          categories: monitoring, alerting
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://prometheus.redhat.com
+          containerImage: quay.io/redhat/prometheus
+          support: CoreOS, Inc
+          healthIndex: A
       spec:
         replaces: prometheusoperator.0.15.0
         displayName: Prometheus Operator
@@ -11346,6 +11540,17 @@ data:
       metadata:
         name: svcat.v0.1.34
         namespace: placeholder
+        annotations:
+          description: Service Catalog lets you provision cloud services directly from the comfort of native Kubernetes tooling. This project is in incubation to bring integration with service brokers to the Kubernetes ecosystem via the Open Service Broker API.
+          longdescription: Service Catalog lets you provision cloud services directly from the comfort of native Kubernetes tooling. This project is in incubation to bring integration with service brokers to the Kubernetes ecosystem via the Open Service Broker API.
+          packageId: operators/rh-operators
+          categories: broker
+          createdAt: 2019/11/15
+          certifiedLevel: Certified
+          repository: https://svcat.redhat.com
+          containerImage: quay.io/redhat/svcat
+          support: Red Hat
+          healthIndex: A
       spec:
         displayName: Service Catalog
         description: Service Catalog lets you provision cloud services directly from the comfort of native Kubernetes tooling. This project is in incubation to bring integration with service brokers to the Kubernetes ecosystem via the Open Service Broker API.
@@ -11748,7 +11953,7 @@ data:
         currentCSV: prometheusoperator.0.22.2
       
     - #! package-manifest: ./deploy/chart/catalog_resources/rh-operators/svcat.v0.1.34.clusterserviceversion.yaml
-      packageName: svcat
+      packageName: service-catalog
       channels:
       - name: alpha
         currentCSV: svcat.v0.1.34
