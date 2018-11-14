@@ -26,7 +26,7 @@ data:
        name: descheduler.v0.0.1
        namespace: placeholder
        annotations:
-         longdescription: >-
+         longdescription: |
            # Descheduler for Kubernetes
 
            ## Introduction
