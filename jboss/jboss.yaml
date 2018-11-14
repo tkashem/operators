@@ -57,7 +57,7 @@ data:
           packageId: operators/jboss
           categories: web server
           description: Platform for building and running web applications on JBoss Web Server 3.1 - Tomcat v8
-          longdescription: Platform for building and running web applications on JBoss Web Server 3.1 - Tomcat v8
+          longDescription: Platform for building and running web applications on JBoss Web Server 3.1 - Tomcat v8
           createdAt: 2019/11/15
           certifiedLevel: Certified
           repository: https://jboss.redhat.com

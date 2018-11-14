@@ -493,7 +493,7 @@ data:
             The Couchbase Autonomous Operator allows users to easily deploy, manage, and
             maintain Couchbase deployments on OpenShift. By installing this integration
             you will be able to deply Couchbase Server clusters with a single command.
-          longdescription: |
+          longDescription: |
             The Couchbase Autonomous Operator allows users to easily deploy, manage, and
             maintain Couchbase deployments on OpenShift. By installing this integration
             you will be able to deply Couchbase Server clusters with a single command.
@@ -886,7 +886,7 @@ data:
         annotations:
           alm-examples: >-
             [{"apiVersion":"dynatrace.com/v1alpha1","kind":"OneAgent","metadata":{"name":"oneagent"},"spec":{"apiUrl":"https://ENVIRONMENTID.live.dynatrace.com/api","args":["APP_LOG_CONTENT_ACCESS=1"],"image":"registry.connect.redhat.com/dynatrace/oneagent"}}]
-          longdescription: |
+          longDescription: |
             Install full-stack monitoring of [OpenShift
             clusters](https://www.dynatrace.com/technologies/openshift-monitoring/) with
             the Dynatrace OneAgent on your cluster. OneAgent connects back to
@@ -1175,7 +1175,7 @@ data:
             The MongoDB Enterprise Kubernetes Operator enables easy deploys of MongoDB
             into Kubernetes clusters, using our management, monitoring and backup
             platforms, Ops Manager and Cloud Manager.
-          longdescription: |
+          longDescription: |
             The MongoDB Enterprise Kubernetes Operator enables easy deploys of MongoDB
             into Kubernetes clusters, using our management, monitoring and backup
             platforms, Ops Manager and Cloud Manager.
