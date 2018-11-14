@@ -9144,7 +9144,7 @@ data:
               $ oc adm policy add-cluster-role-to-user strimzi-kafka-broker -z strimzi-cluster-operator --namespace <namespace>
               ```
           description: Red Hat AMQ Streams is a massively scalable, distributed, and high performance data streaming platform based on the Apache Kafka project.
-          categories: messaging, streaming
+          categories: streaming
           createdAt: 2019/11/15
           certifiedLevel: Certified
           repository: https://amqstreams.redhat.com
@@ -10074,7 +10074,7 @@ data:
       
             Coming soon, the ability to schedule backups to happen on or off cluster.
           description: etcd is a distributed key value store that provides a reliable way to store data across a cluster of machines.
-          categories: key value, database
+          categories: database
           createdAt: 2019/11/15
           certifiedLevel: Certified
           repository: https://etcd.coreos.com
@@ -11168,7 +11168,7 @@ data:
             **Handles the dynamic nature of containers**
             Alerting rules are attached to groups of containers instead of individual instances, which is ideal for the highly dynamic nature of container deployment.
           description: An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.
-          categories: monitoring, alerting
+          categories: monitoring
           createdAt: 2019/11/15
           certifiedLevel: Certified
           repository: https://prometheus.redhat.com
@@ -11449,7 +11449,6 @@ data:
         annotations:
           description: Service Catalog lets you provision cloud services directly from the comfort of native Kubernetes tooling. This project is in incubation to bring integration with service brokers to the Kubernetes ecosystem via the Open Service Broker API.
           longdescription: Service Catalog lets you provision cloud services directly from the comfort of native Kubernetes tooling. This project is in incubation to bring integration with service brokers to the Kubernetes ecosystem via the Open Service Broker API.
-          categories: broker
           createdAt: 2019/11/15
           certifiedLevel: Certified
           repository: https://svcat.redhat.com

@@ -558,7 +558,7 @@ data:
             availability. Plus, with the most comprehensive SQL-compatible query
             language (N1QL), migrating from RDBMS to Couchbase Server is easy with ANSI
             joins.
-          categories: database, nosql, key value
+          categories: database
           createdAt: 2019/11/15
           certifiedLevel: Certified II
           repository: https://couchbase.com
@@ -1217,7 +1217,7 @@ data:
             routing processes. Sharding is a A database architecture that partitions
             data by key ranges and distributes the data among two or more database
             instances. Sharding enables horizontal scaling.
-          categories: database, nosql
+          categories: database
           createdAt: 2019/11/15
           certifiedLevel: Certified II
           repository: https://mongodb.com

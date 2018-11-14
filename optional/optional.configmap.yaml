@@ -63,7 +63,7 @@ data:
            Any api could be changed any time with out any notice. That said, your feedback is
            very important and appreciated to make this project more stable and useful.
          description: An operator to run the OpenShift descheduler
-         categories: scheduler, optional
+         categories: openshift optional
          createdAt: 2019/11/15
          certifiedLevel: Primed
          repository: https://descheduler.redhat.com
