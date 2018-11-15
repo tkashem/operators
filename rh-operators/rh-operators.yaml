@@ -10362,7 +10362,7 @@ data:
           longDescription: Kubernetes Federation V2 namespace-scoped installation
           description: Kubernetes Federation V2 namespace-scoped installation
           packageId: operators/rh-operators
-          categories: installation
+          categories: openshift optional
           createdAt: 2019/11/15
           certifiedLevel: Certified
           repository: https://federationv2.redhat.com
